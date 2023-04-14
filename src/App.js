@@ -10,7 +10,7 @@ import Codex from './components/Codex';
 function App() {
   return (
     <div className="App" style={{ backgroundColor: '#525252' }}>
-      <Router>
+      <Router basename="/factory-insight">
         <Header />
         <Routes>
           <Route path="/" element={<Factories />} />
