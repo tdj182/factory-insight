@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <Navbar className="navbar bg-danger" data-bs-theme="dark" expand="md">
-      <NavbarBrand style={{ color: 'white' }} href="/factories">Factory Insight</NavbarBrand>
+      <NavbarBrand style={{ color: 'white' }}>Factory Insight</NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Nav className="mr-auto" navbar>
         <NavItem>
