@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/factory-insight/static/css/main.12c4b540.css",
+    "main.js": "/factory-insight/static/js/main.f3e972d4.js",
+    "static/js/787.ac75c754.chunk.js": "/factory-insight/static/js/787.ac75c754.chunk.js",
+    "index.html": "/factory-insight/index.html",
+    "main.12c4b540.css.map": "/factory-insight/static/css/main.12c4b540.css.map",
+    "main.f3e972d4.js.map": "/factory-insight/static/js/main.f3e972d4.js.map",
+    "787.ac75c754.chunk.js.map": "/factory-insight/static/js/787.ac75c754.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.12c4b540.css",
+    "static/js/main.f3e972d4.js"
+  ]
+}
