@@ -1,0 +1,25 @@
+table {
+  margin: 0 auto;
+}
+
+thead {
+  border-bottom: solid black 1px;
+}
+
+.resource-name {
+  border-right: solid black 1px;
+}
+
+.resource-table {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.resource-table th,
+.resource-table td {
+  padding: 10px;
+}
+
+.negative {
+  color: red;
+}

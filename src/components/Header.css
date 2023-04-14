@@ -1,0 +1,12 @@
+.navbar-nav .nav-link {
+  color: white;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a.active {
+  font-weight: bold;
+}

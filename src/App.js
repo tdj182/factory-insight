@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Factories from './components/Factories';
+import Codex from './components/Codex';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{ backgroundColor: '#525252' }}>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Factories />} />
+          <Route path="/factories" element={<Factories />} />
+          <Route path="/codex" element={<Codex />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

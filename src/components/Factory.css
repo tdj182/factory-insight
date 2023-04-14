@@ -1,0 +1,11 @@
+.toggleHeader:hover {
+  cursor: pointer;
+  background-color: rgb(66, 66, 66);
+  padding: .2rem;
+  border-radius: 5px;
+}
+
+.fa-pen-to-square:hover {
+  cursor: pointer;
+  color: green;
+}
