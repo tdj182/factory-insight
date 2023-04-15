@@ -204,7 +204,7 @@ const Factory = ({ id, name = 'new factory', resources = {}, onNameChange, onDel
         <Button className="mx-2" color="primary" onClick={handleShareInputs}>
           Share Inputs
         </Button>
-        <Input className="mx-2" type="file" accept=".json" onChange={handleUploadInputs} style={{ width: "30%"}}/>
+        <Input className="mx-2" type="file" accept=".json"  onChange={handleUploadInputs} style={{display: 'none'}}/>
         <Button className="mx-2" color="primary" onClick={() => document.querySelector('input[type="file"]').click()}>
           Upload Inputs
         </Button>
