@@ -117,10 +117,15 @@ const Factory = ({ id, name = 'new factory', resources = {}, onNameChange, onDel
           }
         });
       }
-      recipeData.products.forEach(output => {
-        const outputAmount = manufacturTimer * output.amount * machineCount * clockSpeed;
-        production[output.item] = (production[output.item] || 0) + outputAmount;
-      });
+      if (inputOverride) {
+        const output = recipeData.products[0];
+        production[output.item] = (production[output.item] || 0) + inputOverride;
+      } else {
+        recipeData.products.forEach(output => {
+          const outputAmount = manufacturTimer * output.amount * machineCount * clockSpeed;
+          production[output.item] = (production[output.item] || 0) + outputAmount;
+        });
+      }
     });
   
     const resourceData = Object.entries(data.items).map(([id, resource]) => {
