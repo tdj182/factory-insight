@@ -8,7 +8,7 @@ const ResourceList = ({ resourceData }) => {
     setShowResourceList(!showResourceList);
   };
   return (
-    <div>
+    <div className='resource-list'>
       <h3><span className='toggleHeader' onClick={toggleResourceList}>Resource List</span></h3>
       {showResourceList && 
         <table className="resource-table" style={{ textAlign: 'center', margin: '0 auto' }}>

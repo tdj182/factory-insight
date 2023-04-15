@@ -71,6 +71,30 @@ const Factory = ({ id, name = 'new factory', resources = {}, onNameChange, onDel
     setShowResourceSelects(!showResourceSelects);
   };
 
+  const handleShareInputs = () => {
+    const data = JSON.stringify(selectedResources);
+    const blob = new Blob([data], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.download = 'resource-selects.json';
+    a.href = url;
+    a.click();
+  };
+
+  const handleUploadInputs = (e) => {
+    const file = e.target.files[0];
+    if (!file) {
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const data = JSON.parse(e.target.result);
+      setSelectedResources(data);
+      setResourceKeys(Object.keys(data));
+    };
+    reader.readAsText(file);
+  };
+
   const calculateProduction = () => {
     const production = {};
     const consumption = {};
@@ -88,6 +112,7 @@ const Factory = ({ id, name = 'new factory', resources = {}, onNameChange, onDel
       recipeData.ingredients.forEach(input => {
         if (!(input.item in data.resources)) {
           const inputAmount = manufacturTimer * input.amount * machineCount * clockSpeed;
+          // calculateSubIngredients()
           consumption[input.item] = (consumption[input.item] || 0) + inputAmount;
         }
       });
@@ -112,7 +137,6 @@ const Factory = ({ id, name = 'new factory', resources = {}, onNameChange, onDel
         remaining,
       };
     }).filter(resource => resource !== null);
-    console.log(resourceData);
     setResourceData(resourceData);
     return resourceData;
   };
@@ -165,10 +189,20 @@ const Factory = ({ id, name = 'new factory', resources = {}, onNameChange, onDel
           ))
         }
       </div>
-      <Button color="primary" onClick={handleAddResource}>
+      <Button className="mb-2" color="primary" onClick={handleAddResource}>
         <FontAwesomeIcon icon={faPlusSquare} style={{ marginRight: 5 }} />
         Add Resource
       </Button>
+
+      <div className='content form-group-inline' >
+        <Button className="mx-2" color="primary" onClick={handleShareInputs}>
+          Share Inputs
+        </Button>
+        <Input className="mx-2" type="file" accept=".json" onChange={handleUploadInputs} style={{ width: "30%"}}/>
+        <Button className="mx-2" color="primary" onClick={() => document.querySelector('input[type="file"]').click()}>
+          Upload Inputs
+        </Button>
+      </div>
 
       <DeleteConfirmationModal
         isOpen={showDeleteModal}

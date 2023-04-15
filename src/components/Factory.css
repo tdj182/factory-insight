@@ -9,3 +9,13 @@
   cursor: pointer;
   color: green;
 }
+
+.content {
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.form-group-inline {
+  display: flex;
+}
