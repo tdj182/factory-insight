@@ -48,7 +48,7 @@ const Factory = ({ id, name = 'new factory', resources = {}, onNameChange, onDel
 
   const handleAddResource = () => {
     const newKey = `resource${resourceKeys.length + 1}`;
-    const newResource = { recipe: "", machineCount: 1, clockSpeed: 1 };
+    const newResource = { recipe: "", machineCount: 1, clockSpeed: 1, inputOverride: 0 };
     setSelectedResources({...selectedResources, [newKey]: newResource});
     setResourceKeys([...resourceKeys, newKey]);
     setShowResourceSelects(true);
@@ -98,7 +98,7 @@ const Factory = ({ id, name = 'new factory', resources = {}, onNameChange, onDel
   const calculateProduction = () => {
     const production = {};
     const consumption = {};
-    Object.values(selectedResources).forEach(({ recipe, machineCount, clockSpeed, resource }) => {
+    Object.values(selectedResources).forEach(({ recipe, machineCount, clockSpeed, resource, inputOverride }) => {
       if (!recipe || recipe === '') {
         return;
       }
@@ -107,15 +107,16 @@ const Factory = ({ id, name = 'new factory', resources = {}, onNameChange, onDel
         console.error(`Recipe data not found for recipe "${recipe}"`);
         return;
       }
-      debugger;
       const manufacturTimer = 60/recipeData.time;
-      recipeData.ingredients.forEach(input => {
-        if (!(input.item in data.resources)) {
-          const inputAmount = manufacturTimer * input.amount * machineCount * clockSpeed;
-          // calculateSubIngredients()
-          consumption[input.item] = (consumption[input.item] || 0) + inputAmount;
-        }
-      });
+      if (!inputOverride) {
+        recipeData.ingredients.forEach(input => {
+          if (!(input.item in data.resources)) {
+            const inputAmount = manufacturTimer * input.amount * machineCount * clockSpeed;
+            // calculateSubIngredients()
+            consumption[input.item] = (consumption[input.item] || 0) + inputAmount;
+          }
+        });
+      }
       recipeData.products.forEach(output => {
         const outputAmount = manufacturTimer * output.amount * machineCount * clockSpeed;
         production[output.item] = (production[output.item] || 0) + outputAmount;

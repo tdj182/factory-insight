@@ -1,5 +1,6 @@
 .form-group-inline {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .content {
@@ -11,4 +12,17 @@
 .fa-xmark:hover {
   cursor: pointer;
   background-color: white;
+}
+
+.fa-building:hover, .fa-clock:hover, .fa-info:hover {
+  /* color: black; */
+  cursor: help;
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+}
+
+.number-input {
+  width: 10%;
+  min-width: 50px;
 }
